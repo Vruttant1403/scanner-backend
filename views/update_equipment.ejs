@@ -1,0 +1,16 @@
+<html>
+    <head>
+
+
+    </head>
+    <body>
+        <form method="POST" action="/equipment/<%=equipment._id%>">
+        <input type="text" placeholder="equipment id" name="equipment_id" value="<%=equipment.equipment_id%>">
+        <input type="text" placeholder="student id" name="student_id" value="<%=equipment.student_id%>">
+        <input type="text" placeholder="issue_date" name="issue_date" value="<%=equipment.issue_date%>">
+        <input type="text" placeholder="return date" name="return_date" value="<%=equipment.return_date%>">
+        <input type="number" placeholder="loan" name="loan" value="<%=equipment.loan%>">
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

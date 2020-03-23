@@ -1,0 +1,22 @@
+var express=require('express');
+var router=express.Router();
+var qr=require('../models/qrcode');
+const qrimg=require('qr-image');
+
+const fs=require('fs');
+
+router.post("/",function(req,res,next){
+
+   
+    qr.generateQR(req.body.id,function(err){
+        if(err)
+        {
+            res.json(err);
+        }
+        
+    });
+    //res.json({"status":"successful"});
+    res.redirect('/equipment');
+});
+
+module.exports=router;

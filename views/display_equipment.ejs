@@ -1,0 +1,41 @@
+<html>
+    <body>
+        <a href="/addequipment">ADD Equipment</a>
+        <a href="/qr_code">GENERATE QR</a>
+        <table>
+            <thead>
+            <tr>
+                <th>equipment id</th>
+                <th>student id</th>
+                <th>issue date</th>
+                <th>return date</th>
+                <th>Loan</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(equipment of equipments) {%>
+                <tr>
+                <td><%= equipment.equipment_id %></td>
+                <td><%= equipment.student_id %></td>
+                <td><%= equipment.issue_date %></td>
+                <td><%= equipment.return_date %></td>
+                <td><%= equipment.loan %></td>
+                <td><a href="/equipment/<%= equipment._id %>">Edit</a> &nbsp &nbsp 
+                    <a href="/equipment/delete/<%= equipment._id %>">Delete</a></td>
+                </tr>
+                
+                <% } %>
+            </tbody>
+        </table>
+        <!-- <% for(equipment of equipments){ %>
+            <p><%= equipment.equipment_id %></p>
+            <p><%= equipment.student_id %></p>
+            <p><%= equipment.issue_date %></p>
+            <p><%= equipment.return_date %></p>
+            <p><%= equipment.loan %></p>
+            <br>
+        <% } %> -->
+       
+    </body>
+</html>

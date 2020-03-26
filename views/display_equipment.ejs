@@ -2,6 +2,9 @@
     <body>
         <a href="/addequipment">ADD Equipment</a>
         <a href="/qr_code">GENERATE QR</a>
+       
+
+        <% if(equipments.length>0){%>
         <table>
             <thead>
             <tr>
@@ -14,6 +17,7 @@
             </tr>
             </thead>
             <tbody>
+
             <% for(equipment of equipments) {%>
                 <tr>
                 <td><%= equipment.equipment_id %></td>
@@ -26,8 +30,14 @@
                 </tr>
                 
                 <% } %>
+               
+                
             </tbody>
         </table>
+        <% } %>
+        <% if(equipments.length==0){%>
+            <p>no records</p>
+            <% } %>
         <!-- <% for(equipment of equipments){ %>
             <p><%= equipment.equipment_id %></p>
             <p><%= equipment.student_id %></p>

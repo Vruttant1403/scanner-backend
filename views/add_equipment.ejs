@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
     <head>
 
 
@@ -13,4 +13,120 @@
             <button type="submit">Submit</button>
         </form>
     </body>
+</html> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QR scanner</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript">
+        function f1(){
+            let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+            scanner.addListener('scan', function (content) {
+              //alert(content);
+              let s1=Number(content);
+              console.log("vidhu"+s1);
+              if(isNaN(s1))
+              {
+               document.write("not valid");
+              }
+             else
+             {
+               let batch_year=Math.trunc(s1/100000);
+               let batch_id=Math.trunc(s1/1000)%100;
+               let stu_id=Math.trunc(s1%1000);
+               alert(batch_year);
+               alert(batch_id);
+               alert(stu_id);
+              var equ_id=document.getElementById('equ_id').value;
+              var x=Date.now();
+              var dat_obj=new Date(x);
+              var year=dat_obj.getFullYear();
+              alert("final"+year);
+             if(batch_id==01)
+             {
+               if(batch_year<=year && batch_year>=year-4)
+               {
+              
+                if(equ_id!=null && equ_id!=undefined)
+                {
+                    window.location.href="/equipment/"+content+'/'+equ_id;
+                }
+                else{
+                    alert('please enter equipment id');
+                }
+               }
+               else{
+                 document.write("invalid");
+               }
+             }
+             else if(batch_id==11 || batch_id==12)
+             {
+                if(batch_year<=year && batch_year>=year-2)
+                {
+                    if(equ_id!=null && equ_id!=undefined)
+                {
+                    window.location.href="/equipment/"+content+'/'+equ_id;
+                }
+                else{
+                    alert('please enter equipment id');
+                }
+                }
+                else
+                {
+                  document.write("invalid");
+                }
+             }
+             else{
+               document.write("invalid");
+             } 
+
+             }
+            });
+            Instascan.Camera.getCameras().then(function (cameras) {
+              if (cameras.length > 0) {
+                scanner.start(cameras[0]);
+              } else {
+                console.error('No cameras found.');
+              }
+            }).catch(function (e) {
+              console.error(e);
+            });
+        }
+    </script>
+    
+     
+</head>
+<body>  
+    <input type="text" placeholder="equipment_id" id="equ_id">
+    <button id="btn" onclick= "f1()"> Scan QR </button>  
+    <br/>
+    <video id="preview"></video>
+</body>
 </html>
+
+
+
+
+
+
+
+
+

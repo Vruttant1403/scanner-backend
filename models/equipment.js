@@ -1,10 +1,9 @@
 const db=require('../db_connection');
 const equipmentSchema=db.Schema({
-    equipment_id : {type:String},
+        equipment_id : {type:String},
         student_id : {type:String},
         issue_date : {type:String},
-        return_date : {type:String},
-        loan : {type:Number}
+       
        
 });
 module.exports=db.model('equipments_borrows',equipmentSchema);

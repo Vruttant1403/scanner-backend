@@ -9,7 +9,51 @@
             let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
             scanner.addListener('scan', function (content) {
               //alert(content);
-              window.location.href="/lib_tmp/"+content;
+              let s1=Number(content);
+              console.log("vidhu"+s1);
+              if(isNaN(s1))
+              {
+               document.write("not valid");
+              }
+             else
+             {
+               let batch_year=Math.trunc(s1/100000);
+               let batch_id=Math.trunc(s1/1000)%100;
+               let stu_id=Math.trunc(s1%1000);
+               alert(batch_year);
+               alert(batch_id);
+               alert(stu_id);
+              
+              var x=Date.now();
+              var dat_obj=new Date(x);
+              var year=dat_obj.getFullYear();
+              alert("final"+year);
+             if(batch_id==01)
+             {
+               if(batch_year<=year && batch_year>=year-4)
+               {
+                window.location.href="/lib_tmp/"+content;
+               }
+               else{
+                 document.write("invalid");
+               }
+             }
+             else if(batch_id==11 || batch_id==12)
+             {
+                if(batch_year<=year && batch_year>=year-2)
+                {
+                  window.location.href="/lib_tmp/"+content;
+                }
+                else
+                {
+                  document.write("invalid");
+                }
+             }
+             else{
+               document.write("invalid");
+             } 
+
+             }
             });
             Instascan.Camera.getCameras().then(function (cameras) {
               if (cameras.length > 0) {
@@ -29,6 +73,5 @@
     <button id="btn" onclick= "f1()"> Scan QR </button>  
     <br/>
     <video id="preview"></video>
-    
 </body>
 </html>

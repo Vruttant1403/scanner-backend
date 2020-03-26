@@ -139,6 +139,7 @@ else{
             let x=200-rows;
             console.log(x);
             res.json(x);
+            //res.redirect('/equipment/');
         }
     })
 }

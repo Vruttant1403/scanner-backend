@@ -34,7 +34,7 @@ router.get('/:id?',function(req,res,next){
                     //in_time : dat_obj.getTime(),
                     in_time:new String(h+":"+m+":"+s),
                     out_time:null,
-                    date:new Date(dat_obj.getFullYear(),dat_obj.getMonth(),dat_obj.getDate()+1)
+                    date:new Date(dat_obj.getFullYear(),dat_obj.getMonth(),dat_obj.getDate())
                 });
                 console.log(tmp);
                 tmp.save(function(err,result){
@@ -160,7 +160,7 @@ router.post('/',function(req,res,next){
         //in_time : dat_obj.getTime(),
         in_time:new String(h+":"+m+":"+s),
         out_time:null,
-        date:new Date(dat_obj.getFullYear(),dat_obj.getMonth(),dat_obj.getDate()+1)
+        date:new Date(dat_obj.getFullYear(),dat_obj.getMonth(),dat_obj.getDate())
     });
     console.log(tmp);
     tmp.save(function(err,result){

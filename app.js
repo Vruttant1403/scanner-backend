@@ -11,9 +11,17 @@ var equipment=require('./routes/equipment_router');
 var qrcode=require('./routes/qrcode_router');
 var lib_tmp=require('./routes/lib_tmp_router');
 var lib=require('./routes/lib_main_router');
+var lib_tmp_out=require('./routes/lib_tmp_out_router');
+var time1=require('./timer');
 
 
 var app = express();
+
+
+
+
+
+
 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -37,8 +45,13 @@ app.set('views',path.join(__dirname,'views'));
 
 
 app.get('/',(req,res,next)=>{
+  
+  time1.f2();
   res.render('index');
 })
+
+
+
 
 app.get('/addequipment',(req,res,next)=>{
   
@@ -63,6 +76,7 @@ app.use('/lib',lib);
 app.use('/lib_tmp',lib_tmp);
 app.use('/equipment',equipment);
 app.use('/qrcode',qrcode);
+app.use('/lib_tmp_out',lib_tmp_out);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
